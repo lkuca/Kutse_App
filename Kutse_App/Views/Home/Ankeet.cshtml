@@ -1,0 +1,136 @@
+﻿@{
+    ViewBag.Title = "anket";
+}
+
+<h2>anket</h2>
+
+@model Kutse_App.Models.Guest
+<style>
+    #jumbotron {
+        color: #fff;
+        background-color: #32373c;
+        border-radius: 9999px;
+        box-shadow: none;
+        text-decoration: none;
+        padding: calc(.667em + 2px) calc(1.333em + 2px);
+        font-size: 1.125em;
+        color: #97ac9f;
+        pointer-events: auto;
+    }
+
+    body {
+        color: #fff;
+        background-color: #32373c;
+        border-radius: 9999px;
+        box-shadow: none;
+        text-decoration: none;
+        padding: calc(.667em + 2px) calc(1.333em + 2px);
+        font-size: 1.125em;
+        color: #97ac9f;
+        pointer-events: auto;
+    }
+
+    a {
+        text-decoration: none;
+        color: #97ac9f;
+    }
+
+        a::selection {
+            color: #000;
+            background: yellow;
+        }
+
+    h1::selection {
+        color: #000;
+        background: yellow;
+    }
+
+    h1 {
+        color: #fff;
+        background-color: #32373c;
+        border-radius: 9999px;
+        box-shadow: none;
+        text-decoration: none;
+        padding: calc(.667em + 2px) calc(1.333em + 2px);
+        font-size: 1.125em;
+        color: #97ac9f;
+        pointer-events: auto;
+    }
+
+    p::selection {
+        color: #000;
+        background: yellow;
+    }
+
+    p {
+        color: #fff;
+        background-color: #32373c;
+        border-radius: 9999px;
+        box-shadow: none;
+        text-decoration: none;
+        padding: calc(.667em + 2px) calc(1.333em + 2px);
+        font-size: 1.125em;
+        color: #97ac9f;
+        pointer-events: auto;
+    }
+
+    th::selection {
+        color: #000;
+        background: yellow;
+    }
+
+    label::selection {
+        color: #000;
+        background: yellow;
+    }
+
+    input::selection {
+        color: #000;
+        background: yellow;
+    }
+
+    ul {
+        color: #fff;
+        background-color: #32373c;
+        border-radius: 9999px;
+        box-shadow: none;
+        text-decoration: none;
+        padding: calc(.667em + 2px) calc(1.333em + 2px);
+        font-size: 1.125em;
+        color: #97ac9f;
+        pointer-events: auto;
+    }
+    input {
+        color: #fff;
+        background-color: #32373c;
+        border-radius: 9999px;
+        box-shadow: none;
+        text-decoration: none;
+        padding: calc(.667em + 2px) calc(1.333em + 2px);
+        font-size: 1.125em;
+        color: #97ac9f;
+        pointer-events: auto;
+    }
+
+    .jumbotron {
+        background-color: #32373c;
+    }
+</style>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    <p>Sisesta nimi: @Html.TextBoxFor(x => x.Name) </p>
+    <p>Sisesta email: @Html.TextBoxFor(x => x.Email) </p>
+    <p>Sisesta tel: @Html.TextBoxFor(x => x.Phone) </p>
+    <p>
+        Sinu valik:
+        @Html.DropDownListFor(x => x.WillAttend,
+       new[]
+       {
+           new SelectListItem() {Text="Tule kindlasti!", Value=bool.TrueString},
+           new SelectListItem() {Text="Kahjuks ei saa tulla!", Value=bool.FalseString},
+       }, "Vali siit")
+    </p>
+
+    <input type="submit" value="Saada vastus" />
+}
