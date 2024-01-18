@@ -14,13 +14,17 @@ namespace Kutse_App.Controllers
     {
         public ActionResult Index()
         {
+            int hour1 = DateTime.Now.Hour;
+            ViewBag.Message1 = hour1 < 10 ? "Tere hommikust" : "Tere päevast";
+            ViewBag.Message1 = hour1 > 10 ? "Head õhtut": "head ööd";
+            
             return View();
         }
         public  ActionResult Kutse()
         {
             int hour = DateTime.Now.Hour;
             ViewBag.Greeting = hour < 10 ? "Tere hommikust" : "Tere päevast";
-            ViewBag.Message = "Ootan sin oma peole! Tule kindlasti!!!ootan sind!";
+            ViewBag.Message = "Ootan sind oma peole! Tule kindlasti!!!ootan sind!";
             return View();
         }
         [HttpGet]
@@ -43,7 +47,7 @@ namespace Kutse_App.Controllers
         }
         public ViewResult Ankeet(Guest guest)
         {
-
+            E_mail(guest);
             if (ModelState.IsValid)
             {
                 return View("Thanks", guest);
@@ -61,9 +65,9 @@ namespace Kutse_App.Controllers
                 WebMail.SmtpServer = "smtp.gmail.com";
                 WebMail.SmtpPort = 587;
                 WebMail.EnableSsl= true;
-                WebMail.UserName = "klopak@gmail.com";
-                WebMail.Password = "****************";
-                WebMail.From = "klopak@gmail.com";
+                WebMail.UserName = "klopak918@gmail.com";
+                WebMail.Password = "kfyr wtfb xawn ekms";
+                WebMail.From = "klopak918@gmail.com";
                 WebMail.Send(guest.Email, "Vastus kutsule",guest.Name + "vastas" +((guest.WillAttend ?? false) ? "tuleb peole" : "ei tule peole"));
                 ViewBag.Message = "Kiri on saatnud!";
             }

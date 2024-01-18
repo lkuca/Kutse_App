@@ -283,7 +283,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\kurb_pilt.jpg" />
     <Content Include="images\party.jpg" />
+    <Content Include="images\rõmus_pilt.jpg" />
     <Content Include="obj\Debug\Kutse_App.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\Kutse_App.dll" />
     <Content Include="obj\Debug\Kutse_App.pdb" />
