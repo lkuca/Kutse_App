@@ -1,4 +1,5 @@
 ﻿using Kutse_App.Models;
+using Microsoft.Ajax.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,6 +51,8 @@ namespace Kutse_App.Controllers
             E_mail(guest);
             if (ModelState.IsValid)
             {
+                db.Guests.Add(guest);
+                db.SaveChanges();
                 return View("Thanks", guest);
             }
             else
@@ -76,6 +79,48 @@ namespace Kutse_App.Controllers
                 ViewBag.Message = "Mul on kahju! Ei saa kirja saada!!!";
             }
 
-        }   
+        }
+        Guestcontext db = new Guestcontext();
+        //[Authorize]
+
+        public ActionResult Guests()
+        {
+            IEnumerable<Guest> guests = db.Guests;
+            return View(guests);
+        }
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Create(Guest guest)
+        {
+            db.Guests.Add(guest);
+            db.SaveChanges();
+            return RedirectToAction("Guests");
+
+        }
+        public ActionResult Delete(int id)
+        {
+            Guest g = db.Guests.Find(id);
+            if (g==null)
+            {
+                return HttpNotFound();
+            }
+            return View(g);
+        }
+        [HttpPost,ActionName("Delete")]
+        public ActionResult DeletConfirmed(int id)
+        {
+            Guest g = db.Guests.Find(id);
+            if (g== null)
+            {
+                return HttpNotFound();
+            }
+            db.Guests.Remove(g);
+            db.SaveChanges();
+            return RedirectToAction("Guests");
+        }
     }
 }

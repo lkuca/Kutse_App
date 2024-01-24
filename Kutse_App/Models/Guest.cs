@@ -8,6 +8,8 @@ namespace Kutse_App.Models
 {
     public class Guest
     {
+        public int Id { get; set; }
+
         [Required(ErrorMessage ="Sisesta nimi siia")]
 
         public string Name { get; set; }
