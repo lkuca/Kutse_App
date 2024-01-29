@@ -35,7 +35,7 @@ namespace Kutse_App.Controllers
         }
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Meie Saidist.";
 
             return View();
         }
@@ -121,6 +121,12 @@ namespace Kutse_App.Controllers
             db.Guests.Remove(g);
             db.SaveChanges();
             return RedirectToAction("Guests");
+        }
+        PeoContext dabik = new PeoContext();
+        public ActionResult Peod()
+        {
+            IEnumerable<Peo> peod = dabik.Peod;
+            return View(peod);
         }
     }
 }
