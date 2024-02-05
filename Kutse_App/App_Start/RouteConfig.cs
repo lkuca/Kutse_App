@@ -16,7 +16,7 @@ namespace Kutse_App
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Kutse", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "About", id = UrlParameter.Optional }
             );
         }
     }

@@ -60,6 +60,20 @@ namespace Kutse_App.Controllers
                 return View();
             }
         }
+        public ViewResult Ankeet(Peo peod)
+        {
+            
+            if (ModelState.IsValid)
+            {
+                dabik.Peod.Add(peod);
+                dabik.SaveChanges();
+                return View("Thanks", peod);
+            }
+            else
+            {
+                return View();
+            }
+        }
 
         public void E_mail(Guest guest)
         {
@@ -109,6 +123,8 @@ namespace Kutse_App.Controllers
                 return HttpNotFound();
             }
             return View(g);
+
+            
         }
         [HttpPost,ActionName("Delete")]
         public ActionResult DeletConfirmed(int id)
@@ -121,12 +137,29 @@ namespace Kutse_App.Controllers
             db.Guests.Remove(g);
             db.SaveChanges();
             return RedirectToAction("Guests");
+
+            
         }
         PeoContext dabik = new PeoContext();
+
         public ActionResult Peod()
         {
             IEnumerable<Peo> peod = dabik.Peod;
             return View(peod);
         }
+        [HttpGet]
+        public ActionResult CreatePeo()
+        {
+            return View();
+        }
+        [HttpPost]
+
+        public ActionResult CreatePeo(Peo peod)
+        {
+            dabik.Peod.Add(peod);
+            dabik.SaveChanges();
+            return RedirectToAction("Peod");
+        }
+
     }
 }
