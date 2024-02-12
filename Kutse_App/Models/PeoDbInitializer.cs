@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
-using System.Data.Entity;
+
 namespace Kutse_App.Models
 {
-    public class PeoDbInitializer : CreateDatabaseIfNotExists<PeoContext>
+    public class PeoDBinitializer: CreateDatabaseIfNotExists<PeoContext>
     {
         protected override void Seed(PeoContext dabik)
         {

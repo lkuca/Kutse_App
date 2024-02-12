@@ -33,6 +33,14 @@ namespace Kutse_App.Controllers
         {
             return View();
         }
+        public ActionResult Ankeet2()
+        {
+            return View();
+        }
+        public ActionResult Ankeet2(Peo peo)
+        {
+            return View(peo);
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Meie Saidist.";
@@ -60,20 +68,7 @@ namespace Kutse_App.Controllers
                 return View();
             }
         }
-        public ViewResult Ankeet(Peo peod)
-        {
-            
-            if (ModelState.IsValid)
-            {
-                dabik.Peod.Add(peod);
-                dabik.SaveChanges();
-                return View("Thanks", peod);
-            }
-            else
-            {
-                return View();
-            }
-        }
+        
 
         public void E_mail(Guest guest)
         {
@@ -93,6 +88,12 @@ namespace Kutse_App.Controllers
                 ViewBag.Message = "Mul on kahju! Ei saa kirja saada!!!";
             }
 
+        }
+        PeoContext dabik = new PeoContext();
+        public ActionResult Peod()
+        {
+            IEnumerable<Peo> Peod = dabik.Peod;
+            return View(Peod);
         }
         Guestcontext db = new Guestcontext();
         //[Authorize]
@@ -140,26 +141,7 @@ namespace Kutse_App.Controllers
 
             
         }
-        PeoContext dabik = new PeoContext();
-
-        public ActionResult Peod()
-        {
-            IEnumerable<Peo> peod = dabik.Peod;
-            return View(peod);
-        }
-        [HttpGet]
-        public ActionResult CreatePeo()
-        {
-            return View();
-        }
-        [HttpPost]
-
-        public ActionResult CreatePeo(Peo peod)
-        {
-            dabik.Peod.Add(peod);
-            dabik.SaveChanges();
-            return RedirectToAction("Peod");
-        }
+        
 
     }
 }

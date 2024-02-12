@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Ankeet2";
+}
+
+<h2>Ankeet2</h2>
+@model Kutse_App.Models.Peo
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    <p> Sisesta nimi: @Html.TextBoxFor(x=>x.Nimi)</p>
+    <input type="submit" value="tee pidu" />
+}
