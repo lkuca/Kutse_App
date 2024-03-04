@@ -367,6 +367,7 @@
     <Content Include="Views\Home\Delete.cshtml" />
     <Content Include="Views\Home\Ankeet2.cshtml" />
     <Content Include="Views\Home\Peod.cshtml" />
+    <Content Include="Views\Home\crit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
