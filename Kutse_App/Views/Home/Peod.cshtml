@@ -6,9 +6,12 @@
 
 <h2>Peod</h2>
 
+@if (User.IsInRole("admin"))
+{
 <p>
     @Html.ActionLink("Create New", "crit")
 </p>
+}
 <table class="table">
     <tr>
         <th>
@@ -22,11 +25,14 @@
         <td>
             @Html.DisplayFor(modelItem => item.Nimi)
         </td>
+        @if (User.IsInRole("admin"))
+        {
         <td>
-            @Html.ActionLink("Edit", "Edit", new { ID=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { ID=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { iD=item.ID })
+            @Html.ActionLink("Edit", "Edit", new { ID = item.ID }) |
+            @Html.ActionLink("Details", "Details", new { ID = item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { iD = item.ID })
         </td>
+        }
     </tr>
 }
 

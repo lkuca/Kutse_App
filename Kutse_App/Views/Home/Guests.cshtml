@@ -5,10 +5,12 @@
 }
 
 <h2>Guests</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@if (User.IsInRole("admin"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
 <table class="table">
     <tr>
         <th>
@@ -47,11 +49,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Adress)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
+            @if (User.IsInRole("admin"))
+            {
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            }
         </tr>
     }
     <style>
@@ -161,6 +166,7 @@
             color: #97ac9f;
             pointer-events: auto;
         }
+
         td {
             color: #fff;
             background-color: #32373c;
@@ -172,6 +178,7 @@
             color: #97ac9f;
             pointer-events: auto;
         }
+
         tr {
             color: #fff;
             background-color: #32373c;
